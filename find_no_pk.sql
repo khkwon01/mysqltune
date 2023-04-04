@@ -8,3 +8,5 @@ WHERE      i.NAME='GEN_CLUST_INDEX';
 
 -- after 8.0.30 version, it provided system generated pk if you setup the below parameter..
 SET @@sql_generate_invisible_primary_key=ON;
+-- if you hide system generated pk, you can setup the below parameter.
+set @@show_gipk_in_create_table_and_information_schema=OFF;
