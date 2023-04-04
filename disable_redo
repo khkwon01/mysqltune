@@ -1,4 +1,4 @@
-It need to be restart MySQL when you setup the below options
+-- It need to be restart MySQL when you setup the below options
 
 MySQL > ALTER INSTANCE DISABLE INNODB REDO_LOG; 
 MySQL > set global innodb_extend_and_initialize=OFF; 
