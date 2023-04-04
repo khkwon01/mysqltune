@@ -1,0 +1,4 @@
+select stmt.thread_id, stmt.sql_text, stage.event_name as state, stage.work_completed, stage.work_estimated, lpad(concat(round(100*stage.work_completed/stage.work_estimated, 2),"%"),10," ")  as completed_at,  lpad(format_pico_time(stmt.timer_wait), 10, " ") as started_ago,  lpad(format_pico_time(stmt.timer_wait/round(100*stage.work_completed/stage.work_estimated,2)*100),  10, " ") as estimated_full_time,  lpad(format_pico_time((stmt.timer_wait/round(100*stage.work_completed/stage.work_estimated,2)*100) -stmt.timer_wait), 10, " ") as estimated_remaining_time,  current_allocated memory  
+from performance_schema.events_statements_current stmt  
+   inner join sys.memory_by_thread_by_current_bytes mt on mt.thread_id = stmt.thread_id  
+   inner join performance_schema.events_stages_current stage  on stage.thread_id = stmt.thread_id\G
