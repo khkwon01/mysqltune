@@ -1,3 +1,3 @@
 # mysqltune
 
-## 1. MySQL thread pool 
+### 1. MySQL thread pool 
