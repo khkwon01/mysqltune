@@ -7,3 +7,20 @@
 | `thread_pool_max_transaction_limit` | #physical_cores * 32, max 512 |
 | `thread_pool_algorithm` | 1 (high concurrency algorithm) |
 | `thread_pool_query_threads_per_group` | > 2 |
+
+### 2. Performance schema set up
+- list all events for monitoring through performance schema
+  ```  
+  SELECT NAME, ENABLED, TIMED
+         FROM performance_schema.setup_instruments;
+  ```
+- adjust values of specific events whether its data collect or not  (value : YES / NO)
+  ```
+  UPDATE performance_schema.setup_instruments
+       SET ENABLED = 'NO'
+       WHERE NAME = 'wait/synch/mutex/sql/LOCK_mysql_create_db';
+  ```
+- list associated table related to above event
+  ```
+  SELECT * FROM performance_schema.setup_consumers;
+  ```
