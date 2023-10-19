@@ -25,7 +25,7 @@
   SELECT * FROM performance_schema.setup_consumers;
   ```
 ### 3. SQL Explain 
-- explain select ~~
-  explain json select ~~
-  explain tree select ~~
+- explain select ~~   
+  explain json select ~~   
+  explain tree select ~~   
 - explain analyze select ~~  (실제 데이터 기반)
