@@ -29,3 +29,26 @@
   explain json select ~~   
   explain tree select ~~   
 - explain analyze select ~~  (실제 데이터 기반)
+
+### 4. Slow query analysis using sys schema
+1) Identify Slow Queries
+   ```
+   # query top 5 query ordered by total latency of execution query 
+   SELECT query, exec_count, total_latency FROM statements_with_runtimes_in_95th_percentile
+   ORDER BY total_latency DESC LIMIT 5;
+   ```
+2) Check for query errors in execution time
+   ```
+   SELECT query, errors FROM statements_with_errors_or_warnings ORDER BY errors DESC LIMIT 5;
+   ```
+3) Check for access latency per table
+   ```
+   SELECT table_name, total_latency, rows_fetched, avg_fetched_latency FROM schema_table_statistics
+   WHERE table_name IN ('table_1', 'table_2’) ORDER BY total_latency DESC;
+   ```
+4) Review index performance against the existing index
+   ```
+   SELECT index_name, rows_selected FROM schema_index_statistics
+   WHERE table_name = 'your_table’ ORDER BY rows_selected DESC;
+   ```
+5) According to the above results, you can adjust or modify the indexes or queries etc.
