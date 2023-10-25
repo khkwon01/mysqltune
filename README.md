@@ -52,3 +52,19 @@
    WHERE table_name = 'your_table’ ORDER BY rows_selected DESC;
    ```
 5) According to the above results, you can adjust or modify the indexes or queries etc.
+
+### 5. check the memory for MySQL against OOM
+1) OS Metric
+   - command : ps -eo user,pid,ppid,rss,size,vsize,pmem,pcpu,time,cmd --sort -rss | head -n 11
+   - top     : top -d 1 | egrep "PID|systemd"  
+               Shift + m  (display memory size order in top)
+2) MySQL Metric
+   ```
+   select * from sys.memory_global_total;
+   select * from sys.memory_global_by_current_bytes;
+   select * from sys.memory_by_user_by_current_bytes;
+   select * from sys.memory_by_thread_by_current_bytes;
+   select * from sys.memory_by_host_by_current_bytes;
+
+   SELECT PATH, format_bytes(SIZE), STATE, PURPOSE FROM INFORMATION_SCHEMA.INNODB_SESSION_TEMP_TABLESPACES;  
+   ```
