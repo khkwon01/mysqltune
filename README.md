@@ -66,5 +66,34 @@
    select * from sys.memory_by_thread_by_current_bytes;
    select * from sys.memory_by_host_by_current_bytes;
 
+   select * from sys.innodb_lock_waits;
+   select * from sys.statement_analysis;
+   select * from sys.statements_with_full_table_scans;
+   select * from sys.statements_with_temp_tables;
+
+   select * from performance_schema.threads ;
+   select * from performance_schema.metadata_locks ;
+   select * from performance_schema.mutex_instances ;
+   select * from performance_schema.processlist ;
+   select * from information_schema.innodb_trx\G
+
+   select EVENT_NAME, sum(CURRENT_NUMBER_OF_BYTES_USED/1024/1024/1024) as sum_CURRENT_NUMBER_OF_BYTES_USED_for_GB 
+   ,sum(SUM_NUMBER_OF_BYTES_ALLOC/1024/1024/1024) from performance_schema.memory_summary_by_account_by_event_name WHERE 
+   CURRENT_NUMBER_OF_BYTES_USED > 0 group by EVENT_NAME order by sum_CURRENT_NUMBER_OF_BYTES_USED_for_GB desc ;
+   select EVENT_NAME, sum(CURRENT_NUMBER_OF_BYTES_USED/1024/1024/1024) as sum_CURRENT_NUMBER_OF_BYTES_USED_for_GB 
+   ,sum(SUM_NUMBER_OF_BYTES_ALLOC/1024/1024/1024) from performance_schema.memory_summary_by_host_by_event_name WHERE 
+   CURRENT_NUMBER_OF_BYTES_USED > 0 group by EVENT_NAME order by sum_CURRENT_NUMBER_OF_BYTES_USED_for_GB desc ;
+   select EVENT_NAME, sum(CURRENT_NUMBER_OF_BYTES_USED/1024/1024/1024) as sum_CURRENT_NUMBER_OF_BYTES_USED_for_GB 
+   ,sum(SUM_NUMBER_OF_BYTES_ALLOC/1024/1024/1024) from performance_schema.memory_summary_by_thread_by_event_name WHERE 
+   CURRENT_NUMBER_OF_BYTES_USED > 0 group by EVENT_NAME order by sum_CURRENT_NUMBER_OF_BYTES_USED_for_GB desc ;
+   select EVENT_NAME, sum(CURRENT_NUMBER_OF_BYTES_USED/1024/1024/1024) as sum_CURRENT_NUMBER_OF_BYTES_USED_for_GB 
+   ,sum(SUM_NUMBER_OF_BYTES_ALLOC/1024/1024/1024) from performance_schema.memory_summary_by_user_by_event_name WHERE 
+   CURRENT_NUMBER_OF_BYTES_USED > 0 group by EVENT_NAME order by sum_CURRENT_NUMBER_OF_BYTES_USED_for_GB desc ;
+   select EVENT_NAME, sum(CURRENT_NUMBER_OF_BYTES_USED/1024/1024/1024) as sum_CURRENT_NUMBER_OF_BYTES_USED_for_GB 
+   ,sum(SUM_NUMBER_OF_BYTES_ALLOC/1024/1024/1024) from performance_schema.memory_summary_global_by_event_name WHERE 
+   CURRENT_NUMBER_OF_BYTES_USED > 0 group by EVENT_NAME order by sum_CURRENT_NUMBER_OF_BYTES_USED_for_GB desc ;
+   SELECT SUM(CURRENT_NUMBER_OF_BYTES_USED) FROM performance_schema.memory_summary_global_by_event_name WHERE `EVENT_NAME` like 
+   'memory/performance_schema%';
+
    SELECT PATH, format_bytes(SIZE), STATE, PURPOSE FROM INFORMATION_SCHEMA.INNODB_SESSION_TEMP_TABLESPACES;  
    ```
