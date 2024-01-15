@@ -26,8 +26,8 @@
   ```
 ### 3. SQL Explain 
 - explain select ~~   
-  explain json select ~~   
-  explain tree select ~~   
+  explain format=json select ~~   
+  explain format=tree select ~~   
 - explain analyze select ~~  (실제 데이터 기반)
 
 ### 4. Slow query analysis using sys schema
