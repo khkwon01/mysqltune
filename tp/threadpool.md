@@ -18,6 +18,6 @@
 
 ### 3. 모니터링
 - mysql에서 모니터링 (performance_schema)
-  - thread_group_state : thread pool, thread group 상태들에 정보표시
-  - thread_group_stats : thread group 통계들
-  - thread_state : thread pool, thread status들에 정보표시
+  - tp_thread_group_state: thread pool, thread group 상태들에 정보표시
+  - tp_thread_group_stats: thread group 통계들
+  - tp_thread_state: thread pool, thread status들에 정보표시
