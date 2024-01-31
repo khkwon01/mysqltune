@@ -21,3 +21,6 @@
   - tp_thread_group_state: thread pool, thread group 상태들에 정보표시
   - tp_thread_group_stats: thread group 통계들
   - tp_thread_state: thread pool, thread status들에 정보표시
+- cloud상 heatwave 서비스 성능 확인 (아래 details 클릭)
+  - thread pool만 따로 확인 할수 있는 방법은 없고, 전체적인 성능 확인       
+  ![image](https://github.com/khkwon01/mysqltune/assets/8789421/d4c30c7e-9f72-4d0c-882a-4a37f3f87bfd)
