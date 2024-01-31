@@ -1,6 +1,7 @@
 ### 1. thread pool 관련 참조 사이트
 - https://dev.mysql.com/doc/refman/8.0/en/thread-pool.html
 - https://dev.mysql.com/blog-archive/the-new-mysql-thread-pool/
+- https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/mysql-database/doc/mysql-server.html#GUID-0EE82DBE-75A0-4ABA-8C4C-1DB47FB05C7F
   
 
 ### 2. 설정
