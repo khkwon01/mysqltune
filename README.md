@@ -1,6 +1,6 @@
 # mysqltune
 ### 1. Hardware associated option
-- cpu configuration: recommend multiple cores and a fast CPU clock
+- Cpu configuration: recommend multiple cores and a fast CPU clock
   - innodb_buffer_pool_instances
     - controls the number of buffer pool instances
     - help to distribute the load across multiple CPUs (default : 8)
