@@ -1,6 +1,20 @@
 # mysqltune
+### 1. Hardware associated option
+- cpu configuration: recommend multiple cores and a fast CPU clock
+  - innodb_buffer_pool_instances
+    - controls the number of buffer pool instances
+    - help to distribute the load across multiple CPUs (default : 8)
+  - innodb_flush_log_at_trx_commit
+    - controls the timing of writing and flushing binlog and redo logs to disk (default : 1)
+  - max_connections
+    - controls the maximum number of concurrent connections to the MySQL
+- Memory configuration: recommend allocating enough memory as possible as the system can
+  - innodb_buffer_pool_size
+    - controls the size of the buffer pool utilized by InnoDB engine
+    - enhance read performance according to the allocation of memory
+  - sort_buffer_size
 
-### 1. MySQL thread pool 
+### 2. MySQL thread pool (commercial version)
 | parameter | recommended value |
 |---|:---|
 | `thread_pool_size` | #physical_cores, max 512 |
@@ -8,7 +22,7 @@
 | `thread_pool_algorithm` | 1 (high concurrency algorithm) |
 | `thread_pool_query_threads_per_group` | > 2 |
 
-### 2. Performance schema set up
+### 3. Performance schema set up
 - list all events for monitoring through performance schema
   ```  
   SELECT NAME, ENABLED, TIMED
@@ -24,13 +38,13 @@
   ```
   SELECT * FROM performance_schema.setup_consumers;
   ```
-### 3. SQL Explain 
+### 4. SQL Explain 
 - explain select ~~   
   explain format=json select ~~   
   explain format=tree select ~~   
 - explain analyze select ~~  (실제 데이터 기반)
 
-### 4. Slow query analysis using sys schema
+### 5. Slow query analysis using sys schema
 1) Identify Slow Queries
    ```
    # query top 5 query ordered by total latency of execution query 
@@ -53,7 +67,7 @@
    ```
 5) According to the above results, you can adjust or modify the indexes or queries etc.
 
-### 5. check the memory for MySQL against OOM
+### 6. check the memory for MySQL against OOM
 1) OS Metric
    - command : ps -eo user,pid,ppid,rss,size,vsize,pmem,pcpu,time,cmd --sort -rss | head -n 11
    - top     : top -d 1 | egrep "PID|systemd"  
