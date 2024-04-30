@@ -1,0 +1,10 @@
+## 데이터베이스 디자인
+
+### 1. table 구조
+- 테이블 정규화 : 중복 데이터 최소화 및 데이터 정합성 향상
+- 적정한 데이터 타입 사용 : 스토리지 공간 줄이고 데이터베이스 성능 향상
+- NULL값 사용 지양 : 데이터 정합성 및 쿼리 성능 향상 (NULL 대신 default 값 사용)
+- 의미 있는 테이블과 컬럼 이름 사용 : 데이터베이스 스키마 및 쿼리 데이터에 이해 증가
+- Primary keys 사용 : 성능 향상 및 데이터 정합성 증가
+- GIPK : default primary key 생성 (sql_generate_invisible_primary_key)
+
