@@ -7,4 +7,5 @@
 - 의미 있는 테이블과 컬럼 이름 사용 : 데이터베이스 스키마 및 쿼리 데이터에 이해 증가
 - Primary keys 사용 : 성능 향상 및 데이터 정합성 증가
 - GIPK : default primary key 생성 (sql_generate_invisible_primary_key)
+- Partitioning 사용 : 파티션별 쿼리 병렬 수행 및 필요로 하는 데이터 읽기 수행 최소화
 
