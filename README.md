@@ -22,6 +22,16 @@
     - controls the maximum size of any individual in-memory internal temporary table by Temptable engine
     - if tmp_table_size limit is reached, it can be made on-disk-based temporary table
     - TempTable is controlled by the temptable_max_ram and temptable_max_mmap
+- Huge Pages : recommend disabling huge pages
+  ```
+  # check the huge pages whether it use or not
+  cat /sys/kernel/mm/transparent_hugepage/enabled
+
+  # disable huge pages in os
+  echo never > /sys/kernel/mm/transparent_hugepage/enabled
+  echo never > /sys/kernel/mm/transparent_hugepage/defrag 
+  ```
+
 
 ### 2. MySQL thread pool (commercial version)
 | parameter | recommended value |
