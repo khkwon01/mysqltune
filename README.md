@@ -52,6 +52,10 @@
 | `thread_pool_query_threads_per_group` | > 2 |
 
 ### 3. Performance schema set up
+- enable the performance schema (default : enable, my.cnf file)
+  ```
+  performance_schema=ON  
+  ```
 - list all events for monitoring through performance schema
   ```  
   SELECT NAME, ENABLED, TIMED
