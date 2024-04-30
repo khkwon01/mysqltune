@@ -13,6 +13,15 @@
     - controls the size of the buffer pool utilized by InnoDB engine
     - enhance read performance according to the allocation of memory
   - sort_buffer_size
+    - controls the buffer size in sorting operations
+    - optimize the performance of unindexed sorting
+  - join_buffer_size
+    - controls the buffer size in join operations
+    - optimize the performance of queries involving the joining of tables
+  - tmp_table_size
+    - controls the maximum size of any individual in-memory internal temporary table by Temptable engine
+    - if tmp_table_size limit is reached, it can be made on-disk-based temporary table
+    - TempTable is controlled by the temptable_max_ram and temptable_max_mmap
 
 ### 2. MySQL thread pool (commercial version)
 | parameter | recommended value |
