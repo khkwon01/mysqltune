@@ -33,8 +33,14 @@
   ```
 - Disk configuration: recommend the fast disk devices like 'SSDs, RAID10, XFS or EXT4'
   - innodb_io_capacity
-    - control the I/O capacity limit
-    - improve the throughput I/O if it can be increased this value
+    - controls the I/O capacity limit
+    - improve the throughput I/O if it can be increased this value on the assumption that the disk can support
+  - innodb_io_capacity_max
+    - controls the maximun I/O capacity limit
+  - innodb_redo_log_capacity
+    - controls the size in redo log files
+    - improve performance by reducing the frequency of disk writes using adjusting this value
+  - binlog_row_image
 
 ### 2. MySQL thread pool (commercial version)
 | parameter | recommended value |
@@ -60,6 +66,7 @@
   ```
   SELECT * FROM performance_schema.setup_consumers;
   ```
+  
 ### 4. SQL Explain 
 - explain select ~~   
   explain format=json select ~~   
