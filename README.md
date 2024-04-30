@@ -31,7 +31,10 @@
   echo never > /sys/kernel/mm/transparent_hugepage/enabled
   echo never > /sys/kernel/mm/transparent_hugepage/defrag 
   ```
-
+- Disk configuration: recommend the fast disk devices like 'SSDs, RAID10, XFS or EXT4'
+  - innodb_io_capacity
+    - control the I/O capacity limit
+    - improve the throughput I/O if it can be increased this value
 
 ### 2. MySQL thread pool (commercial version)
 | parameter | recommended value |
