@@ -67,7 +67,7 @@
 3) Check for access latency per table
    ```
    SELECT table_name, total_latency, rows_fetched, avg_fetched_latency FROM schema_table_statistics
-   WHERE table_name IN ('table_1', 'table_2’) ORDER BY total_latency DESC;
+   WHERE table_name IN ('table_1', 'table_2') ORDER BY total_latency DESC;
    ```
 4) Review index performance against the existing index
    ```
