@@ -9,3 +9,10 @@
 - GIPK : default primary key 생성 (sql_generate_invisible_primary_key)
 - Partitioning 사용 : 파티션별 쿼리 병렬 수행 및 필요로 하는 데이터 읽기 수행 최소화
 
+### 2. 쿼리 최적화
+- indexes 사용: 쿼리에서 많이 사용되는 컬럼을 기준으로 index 생성
+- select * 제거: select시 필요한 컬럼만 사용
+- explain 사용 : 쿼리 plan 분석 및 성능 이슈 확인
+- where 조건 사용 : 불필요한 데이터 필터링후 관련된 데이터만 return
+
+
