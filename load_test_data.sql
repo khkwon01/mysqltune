@@ -12,7 +12,7 @@ DELIMITER $$
 CREATE PROCEDURE load_data()
 begin
   DECLARE i int DEFAULT 0;
-  while i < 100000 do
+  while i < 200000 do
     INSERT INTO `students`
               (
                           `first_name`,
