@@ -41,7 +41,8 @@
     - controls the size in redo log files
     - improve performance by reducing the frequency of disk writes using adjusting this value
   - binlog_row_image
-
+    - reduces the amount of data written to the binary log if it define "minimal" as value
+      
 ### 2. MySQL thread pool (commercial version)
 | parameter | recommended value |
 |---|:---|
