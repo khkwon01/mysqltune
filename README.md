@@ -44,9 +44,11 @@
     - reduces the amount of data written to the binary log if it define "minimal" as value
       
 ### 2. Primary Key Design (recommend integer auto-increment as pk)
+- The PK must be mandatory in MySQL
 - It needs to be a well-designed PK because PK as cluster index stores the data
 - The secondary index uses the primary key to get the actual data
 - For finding no pk table in a database, execute `find_no_pk.sql` script included in this GitHub repo
+- For finding unused or duplicate index in table, execute `find_not_used_index.sql, find_duplicate_index.sql` script
       
 ### 3. MySQL thread pool (commercial version)
 | parameter | recommended value |
