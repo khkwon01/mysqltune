@@ -52,7 +52,7 @@
 
 ### 3. Redo Log Size
 - During service peak time, measure the amount of redo usage using `check_redo_log_size.sql`
-- And you estimate the required amount during 1 hour and set like below
+- And you estimate the required amount during 1 hour and set like below    
   ```set persist innodb_redo_log_capacity=<estimated value>*1024*1024*1024;``` 
       
 ### 4. MySQL thread pool (commercial version)
