@@ -43,7 +43,13 @@
   - binlog_row_image
     - reduces the amount of data written to the binary log if it define "minimal" as value
       
-### 2. MySQL thread pool (commercial version)
+### 2. Primary Key Design (recommend integer auto-increment as pk)
+- It needs to be a well-designed PK because PK as cluster index stores the data
+- The secondary index uses the primary key to get the actual data
+    
+
+      
+### 3. MySQL thread pool (commercial version)
 | parameter | recommended value |
 |---|:---|
 | `thread_pool_size` | #physical_cores, max 512 |
@@ -51,7 +57,7 @@
 | `thread_pool_algorithm` | 1 (high concurrency algorithm) |
 | `thread_pool_query_threads_per_group` | > 2 |
 
-### 3. Performance schema set up
+### 4. Performance schema set up
 - enable the performance schema (default : enable, my.cnf file)
   ```
   performance_schema=ON  
@@ -72,13 +78,13 @@
   SELECT * FROM performance_schema.setup_consumers;
   ```
   
-### 4. SQL Explain 
+### 5. SQL Explain 
 - explain select ~~   
   explain format=json select ~~   
   explain format=tree select ~~   
 - explain analyze select ~~  (실제 데이터 기반)
 
-### 5. Slow query analysis using sys schema
+### 6. Slow query analysis using sys schema
 1) Identify Slow Queries
    ```
    # query top 5 query ordered by total latency of execution query 
@@ -101,7 +107,7 @@
    ```
 5) According to the above results, you can adjust or modify the indexes or queries etc.
 
-### 6. check the memory for MySQL against OOM
+### 7. check the memory for MySQL against OOM
 1) OS Metric
    - command : ps -eo user,pid,ppid,rss,size,vsize,pmem,pcpu,time,cmd --sort -rss | head -n 11
    - top     : top -d 1 | egrep "PID|systemd"  
