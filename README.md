@@ -1,6 +1,6 @@
 # mysqltune
 ### 1. Hardware associated option
-- Cpu configuration: recommend multiple cores and a fast CPU clock
+- Cpu configuration: recommend `multiple cores and a fast CPU clock`
   - innodb_buffer_pool_instances
     - controls the number of buffer pool instances
     - help to distribute the load across multiple CPUs (default : 8)
@@ -8,7 +8,7 @@
     - controls the timing of writing and flushing binlog and redo logs to disk (default : 1)
   - max_connections
     - controls the maximum number of concurrent connections to the MySQL
-- Memory configuration: recommend allocating enough memory as possible as the system can
+- Memory configuration: recommend allocating `enough memory` as possible as the system can
   - innodb_buffer_pool_size
     - controls the size of the buffer pool utilized by InnoDB engine
     - enhance read performance according to the allocation of memory
@@ -22,7 +22,7 @@
     - controls the maximum size of any individual in-memory internal temporary table by Temptable engine
     - if tmp_table_size limit is reached, it can be made on-disk-based temporary table
     - TempTable is controlled by the temptable_max_ram and temptable_max_mmap
-- Huge Pages : recommend disabling huge pages
+- Huge Pages : recommend `disabling huge pages`
   ```
   # check the huge pages whether it use or not
   cat /sys/kernel/mm/transparent_hugepage/enabled
@@ -31,7 +31,7 @@
   echo never > /sys/kernel/mm/transparent_hugepage/enabled
   echo never > /sys/kernel/mm/transparent_hugepage/defrag 
   ```
-- Disk configuration: recommend the fast disk devices like 'SSDs, RAID10, XFS or EXT4'
+- Disk configuration: recommend `fast disk devices` like 'SSDs, RAID10, XFS or EXT4'
   - innodb_io_capacity
     - controls the I/O capacity limit
     - improve the throughput I/O if it can be increased this value on the assumption that the disk can support
