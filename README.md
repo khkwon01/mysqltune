@@ -22,6 +22,9 @@
     - controls the maximum size of any individual in-memory internal temporary table by Temptable engine
     - if tmp_table_size limit is reached, it can be made on-disk-based temporary table
     - TempTable is controlled by the temptable_max_ram and temptable_max_mmap
+  - memory management library (recommend `tcmalloc` library)
+    - jemalloc: good perf, less memory management, use `install_jemalloc.sh` script how to build
+    - tcmalloc: great, use `install_tcmalloc.sh` script how to build
 - Huge Pages : recommend `disabling huge pages`
   ```
   # check the huge pages whether it use or not
