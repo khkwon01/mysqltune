@@ -46,7 +46,7 @@
 ### 2. Primary Key Design (recommend integer auto-increment as pk)
 - It needs to be a well-designed PK because PK as cluster index stores the data
 - The secondary index uses the primary key to get the actual data
-    
+- For finding no pk table in a database, execute     
 
       
 ### 3. MySQL thread pool (commercial version)
