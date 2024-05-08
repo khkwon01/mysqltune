@@ -79,7 +79,7 @@
   SELECT * FROM performance_schema.setup_consumers;
   ```
   
-### 5. SQL Explain 
+### 5. SQL Explain Plan
 - explain select ~~   
   explain format=json select ~~   
   explain format=tree select ~~   
