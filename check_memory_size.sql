@@ -12,9 +12,11 @@ ORDER BY SUM(current_alloc) DESC;
 
 
 -- for protecting disk swapping, you can setup the below parameter (track and limit the memory consumption).
+-- it don't affect the users with CONNECTION_ADMIN privilege. 
 set @@global_connection_memory_tracking=1;
 set <global/session> connection_memory_limit=2200000;
 SET GLOBAL global_connection_memory_limit=536870912000;
+
 
 -- check the connection consumption size
 SELECT format_bytes(variable_value) global_connection_memory  
