@@ -49,8 +49,13 @@
 - The secondary index uses the primary key to get the actual data
 - For finding no pk table in a database, execute `find_no_pk.sql` script included in this GitHub repo
 - For finding unused or duplicate index in table, execute `find_not_used_index.sql, find_duplicate_index.sql` script
+
+### 3. Redo Log Size
+- During service peak time, measure the amount of redo usage using `check_redo_log_size.sql`
+- And you estimate the required amount during 1 hour and set like below
+  ```set persist innodb_redo_log_capacity=<estimated value>*1024*1024*1024;``` 
       
-### 3. MySQL thread pool (commercial version)
+### 4. MySQL thread pool (commercial version)
 | parameter | recommended value |
 |---|:---|
 | `thread_pool_size` | #physical_cores, max 512 |
@@ -58,7 +63,7 @@
 | `thread_pool_algorithm` | 1 (high concurrency algorithm) |
 | `thread_pool_query_threads_per_group` | > 2 |
 
-### 4. Performance schema set up
+### 5. Performance schema set up
 - enable the performance schema (default : enable, my.cnf file)
   ```
   performance_schema=ON  
@@ -79,13 +84,13 @@
   SELECT * FROM performance_schema.setup_consumers;
   ```
   
-### 5. SQL Explain Plan
+### 6. SQL Explain Plan
 - explain select ~~   
   explain format=json select ~~   
   explain format=tree select ~~   
 - explain analyze select ~~  (실제 데이터 기반)
 
-### 6. Slow query analysis using sys schema
+### 7. Slow query analysis using sys schema
 1) Identify Slow Queries
    ```
    # query top 5 query ordered by total latency of execution query 
@@ -108,7 +113,7 @@
    ```
 5) According to the above results, you can adjust or modify the indexes or queries etc.
 
-### 7. check the memory for MySQL against OOM
+### 8. check the memory for MySQL against OOM
 1) OS Metric
    - command : ps -eo user,pid,ppid,rss,size,vsize,pmem,pcpu,time,cmd --sort -rss | head -n 11
    - top     : top -d 1 | egrep "PID|systemd"  
