@@ -45,6 +45,8 @@
     - improve performance by reducing the frequency of disk writes using adjusting this value
   - binlog_row_image
     - reduces the amount of data written to the binary log if it define "minimal" as value
+- Kernel and parameter examples for increasing the connection between client and mysql
+  - https://www.percona.com/blog/mysql-challenge-100k-connections/ 
       
 ### 2. Primary Key Design (recommend integer auto-increment as pk)
 - The PK must be mandatory in MySQL
