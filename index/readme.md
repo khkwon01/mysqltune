@@ -1,4 +1,4 @@
-### 1. index basic architecture
+### 1. index basic architecture and work flow
 ![image](https://github.com/khkwon01/mysqltune/assets/8789421/153e554d-e90b-470a-a19a-cc86d73dc6b1)
 - The primary key is a `critical factor` in performance
 - If you create a secondary indexes, it includes `primary key values`
