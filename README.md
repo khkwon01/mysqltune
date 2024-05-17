@@ -101,6 +101,21 @@
    # query top 5 query ordered by total latency of execution query 
    SELECT query, exec_count, total_latency FROM statements_with_runtimes_in_95th_percentile
    ORDER BY total_latency DESC LIMIT 5;
+
+   # get top 10 slow query
+   SELECT * FROM performance_schema.events_statements_summary_by_digest
+   WHERE digest_text LIKE '%SELECT%'
+   ORDER BY sum_timer_wait DESC LIMIT 10;
+
+   # get top 10 execution time
+   SELECT * FROM performance_schema.events_statements_history_long
+   ORDER BY timer_wait DESC LIMIT 10;
+
+   # get top 10 resource usage (especially cpu)
+   SELECT * FROM
+   performance_schema.events_stages_summary_global_by_event_name
+   WHERE event_name LIKE '%wait/synch/mutex/sql/THD%'
+   ORDER BY sum_timer_wait DESC LIMIT 10;
    ```
 2) Check for query errors in execution time
    ```
