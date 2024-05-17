@@ -1,5 +1,9 @@
 # mysqltune
-### 1. Hardware associated option
+
+### 1. The overall process of MySQL tuning
+![image](https://github.com/khkwon01/mysqltune/assets/8789421/a635850e-bfba-4a7e-bee8-a269f3c1a5dd)
+
+### 2. Hardware associated option
 - Cpu configuration: recommend `multiple cores and a fast CPU clock`
   - innodb_buffer_pool_instances
     - controls the number of buffer pool instances
@@ -48,19 +52,19 @@
 - Kernel and parameter examples for increasing the connection between client and mysql
   - https://www.percona.com/blog/mysql-challenge-100k-connections/ 
       
-### 2. Primary Key Design (recommend integer auto-increment as pk)
+### 3. Primary Key Design (recommend integer auto-increment as pk)
 - The PK must be mandatory in MySQL
 - It needs to be a well-designed PK because PK as cluster index stores the data
 - The secondary index uses the primary key to get the actual data
 - For finding no pk table in a database, execute `find_no_pk.sql` script included in this GitHub repo
 - For finding unused or duplicate index in table, execute `find_not_used_index.sql, find_duplicate_index.sql` script
 
-### 3. Redo Log Size
+### 4. Redo Log Size
 - During service peak time, measure the amount of redo usage using `check_redo_log_size.sql`
 - And you estimate the required amount during 1 hour and set like below    
   ```set persist innodb_redo_log_capacity=<estimated value>*1024*1024*1024;``` 
       
-### 4. MySQL thread pool (commercial version)
+### 5. MySQL thread pool (commercial version)
 | parameter | recommended value |
 |---|:---|
 | `thread_pool_size` | #physical_cores, max 512 |
@@ -68,7 +72,7 @@
 | `thread_pool_algorithm` | 1 (high concurrency algorithm) |
 | `thread_pool_query_threads_per_group` | > 2 |
 
-### 5. Performance schema set up
+### 6. Performance schema set up
 - enable the performance schema (default : enable, my.cnf file)
   ```
   performance_schema=ON  
@@ -89,13 +93,13 @@
   SELECT * FROM performance_schema.setup_consumers;
   ```
   
-### 6. SQL Explain Plan
+### 7. SQL Explain Plan
 - explain select ~~   
   explain format=json select ~~   
   explain format=tree select ~~   
 - explain analyze select ~~  (실제 데이터 기반)
 
-### 7. Slow query analysis using sys schema
+### 8. Slow query analysis using sys schema
 1) Identify Slow Queries
    ```
    # query top 5 query ordered by total latency of execution query 
@@ -133,7 +137,7 @@
    ```
 5) According to the above results, you can adjust or modify the indexes or queries etc.
 
-### 8. check the memory for MySQL against OOM
+### 9. check the memory for MySQL against OOM
 1) OS Metric
    - command : ps -eo user,pid,ppid,rss,size,vsize,pmem,pcpu,time,cmd --sort -rss | head -n 11
    - top     : top -d 1 | egrep "PID|systemd"  
