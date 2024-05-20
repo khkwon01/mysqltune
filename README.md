@@ -184,7 +184,7 @@
 ### 10. replication tunning
 - set up minimal value for storing changed data (default: full)
   - binlog_row_image = minimal (log only changed columns)
-    * in the case of noblob, log all columns except for BLOB and TEXT
+  * in the case of noblob, log all columns except for BLOB and TEXT
 - set up more binlog_cache_size variable if Binlog_cache_disk_use(status) increased for replicating data from source and replica
   - binlog_cache_size = ? (default 32K)
-    * if the binary log cache is too small to hold transaction per client, the changes are written to disk 
+  * if the binary log cache is too small to hold transaction per client, the changes are written to disk 
