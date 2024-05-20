@@ -3,6 +3,9 @@
 ### 1. The overall process of MySQL tuning
 ![image](https://github.com/khkwon01/mysqltune/assets/8789421/a635850e-bfba-4a7e-bee8-a269f3c1a5dd)
 
+- Application(Client) aspect
+![image](https://github.com/khkwon01/mysqltune/assets/8789421/9d6ba897-1b79-462e-b338-5673cccbd092)
+
 ### 2. Hardware associated option
 - Cpu configuration: recommend `multiple cores and a fast CPU clock`
   - innodb_buffer_pool_instances
