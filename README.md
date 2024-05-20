@@ -1,6 +1,7 @@
 # mysqltune
 
 ### 1. The overall process of MySQL tuning
+- MySQL All aspect
 ![image](https://github.com/khkwon01/mysqltune/assets/8789421/a635850e-bfba-4a7e-bee8-a269f3c1a5dd)
 
 - Application(Client) aspect
