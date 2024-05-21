@@ -188,9 +188,16 @@
 ### 10. replication tunning
 ![image](https://github.com/khkwon01/mysqltune/assets/8789421/84c46f96-b031-47cf-b168-2ae1df931efb)
 
-- set up minimal value for at least storing changed data (default: full)
-  - binlog_row_image = minimal (log only changed columns)
-  * in the case of noblob value, log all columns except for BLOB and TEXT
-- set up more binlog_cache_size variable if Binlog_cache_disk_use(status) increased for replicating data from source and replica
-  - binlog_cache_size = ? (default 32K)
-  * if the binary log cache is too small to hold transaction per client, the changes are written to disk 
+- source aspect
+  - set up minimal value for at least storing changed data (default: full)
+    - binlog_row_image = minimal (log only changed columns)
+    * in the case of noblob value, log all columns except for BLOB and TEXT
+  - set up more binlog_cache_size variable if Binlog_cache_disk_use(status) increased for replicating data from source and replica
+    - binlog_cache_size = ? (default 32K)
+    * if the binary log cache is too small to hold transaction per client, the changes are written to disk 
+- replica aspect
+  - set up multithreaded replication
+    - replica_parallel_workers=4  (how many sql thread(applier) use, default 4)
+    - replica_parallel_type=LOGICAL_CLOCK (8.0.26~, parallelization based on timestamp in transaction regardless of database)
+    - replica_preserve_commit_order=1 (same order commit as source executed)
+  
