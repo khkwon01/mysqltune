@@ -186,7 +186,9 @@
    SELECT PATH, format_bytes(SIZE), STATE, PURPOSE FROM INFORMATION_SCHEMA.INNODB_SESSION_TEMP_TABLESPACES;  
    ```
 ### 10. replication tunning
-- set up minimal value for storing changed data (default: full)
+![image](https://github.com/khkwon01/mysqltune/assets/8789421/f8be3b81-1d01-4653-bcfa-9013ee2f680e)
+
+- set up minimal value for at least storing changed data (default: full)
   - binlog_row_image = minimal (log only changed columns)
   * in the case of noblob value, log all columns except for BLOB and TEXT
 - set up more binlog_cache_size variable if Binlog_cache_disk_use(status) increased for replicating data from source and replica
