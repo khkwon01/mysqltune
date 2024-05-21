@@ -194,7 +194,8 @@
     * in the case of noblob value, log all columns except for BLOB and TEXT
   - set up more binlog_cache_size variable if Binlog_cache_disk_use(status) increased for replicating data from source and replica
     - binlog_cache_size = ? (default 32K)
-    * if the binary log cache is too small to hold transaction per client, the changes are written to disk 
+    * if the binary log cache is too small to hold transaction per client, the changes are written to disk
+  - set up binlog_group_commit_sync_delay to make more big group transaction
 - replica aspect
   - set up multithreaded replication
     - replica_parallel_workers=4  (how many sql thread(applier) use, default 4)
