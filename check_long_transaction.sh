@@ -16,4 +16,4 @@ FROM
   JOIN performance_schema.events_statements_current   stm USING (thread_id)
 WHERE
       trx.state = 'ACTIVE'
-  AND trx.timer_wait > 1000000000000 * 1\G
+  AND trx.timer_wait > 1000000000000 * 1\G  -- 1 second(unit :pico)
