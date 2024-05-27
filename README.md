@@ -207,3 +207,5 @@
     - replica_parallel_type=LOGICAL_CLOCK (8.0.26~, parallelization based on timestamp in transaction regardless of database)
     - replica_preserve_commit_order=1 (same order commit as source executed)
   
+### 11. Schema management tool (open source : Skeema)
+- URl : https://www.skeema.io/
