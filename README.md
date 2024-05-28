@@ -207,5 +207,8 @@
     - replica_parallel_type=LOGICAL_CLOCK (8.0.26~, parallelization based on timestamp in transaction regardless of database)
     - replica_preserve_commit_order=1 (same order commit as source executed)
   
-### 11. Schema management tool (open source : Skeema)
+### 11. Schema management tool (open source: Skeema)
 - URl : https://www.skeema.io/
+
+### 12. MySQL monitoring (self-made tool based on python)
+- https://github.com/khkwon01/mysqlhealth/tree/main
