@@ -212,3 +212,8 @@
 
 ### 12. MySQL monitoring (self-made tool based on python)
 - https://github.com/khkwon01/mysqlhealth/tree/main
+
+### 13. Load test for MySQL
+- architecture
+![image](https://github.com/khkwon01/mysqltune/assets/8789421/f7b51efa-cee2-4ebd-a52d-09cd726da3b1)
+- https://github.com/khkwon01/qb
