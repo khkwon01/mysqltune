@@ -214,6 +214,28 @@
 - https://github.com/khkwon01/mysqlhealth/tree/main
 
 ### 13. Load test for MySQL
-- work architecture   
-![image](https://github.com/khkwon01/mysqltune/assets/8789421/f7b51efa-cee2-4ebd-a52d-09cd726da3b1)
-- https://github.com/khkwon01/qb
+- Open-source Qb
+  - work architecture   
+  ![image](https://github.com/khkwon01/mysqltune/assets/8789421/f7b51efa-cee2-4ebd-a52d-09cd726da3b1)
+  - source code : https://github.com/khkwon01/qb
+- built-in function in mysql : execute times of number defined parameter and as a result, get execution time
+  ```
+  select benchmark(100000000, 2+2) ;
+  ```
+- mysqlslap : mysql command line tool
+  ```
+  -- generate sql automatically and execute 100 concurrent connection simantanously
+  mysqlslap --user=admin --auto-generate-sql --concurrency=100
+
+  -- execute 5 times with 200 concurrent connections
+  mysqlslap --user=adimn --create-schema=test --query="select * from test1 where name = 't1';" --concurrency=200 --iterations=5
+  ```
+- sysbench : cross-platform, multithreaded benchmark tool. it can evaluates OS parameters.
+  ```
+  -- step1 : make schema and table and then generate temporary data based on it
+  sysbench oltp_read_write --table_size=1000000 --mysql-db=test --mysql-host=localhost --mysql-port=3306 --mysql-user=root --mysql-password=mysql prepare
+  -- step2: execute benchmark query
+  sysbench oltp_read_write --threads=8 --time=60 --events=0 --table_size=1000000 --mysql-db=test --mysql-host=localhost --mysql-port=3306 --mysql-user=root --mysql-password=mysql run
+  -- step3: after testing, remove benchmark schema and table, data
+  sysbench oltp_read_write --mysql-db=test --mysql-host=localhost --mysql-port=3306 --mysql-user=root --mysql-password=mysql cleanup
+  ```
