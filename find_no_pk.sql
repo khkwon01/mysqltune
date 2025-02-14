@@ -1,10 +1,18 @@
 -- find no pk table
 
-SELECT i.TABLE_ID, t.NAME  
-FROM INFORMATION_SCHEMA.INNODB_INDEXES i  
-   JOIN INFORMATION_SCHEMA.INNODB_TABLES t ON (i.TABLE_ID = t.TABLE_ID)  
-WHERE      i.NAME='GEN_CLUST_INDEX';
-
+select tab.table_schema as database_name,
+       tab.table_name
+from information_schema.tables tab
+left join information_schema.table_constraints tco
+          on tab.table_schema = tco.table_schema
+          and tab.table_name = tco.table_name
+          and tco.constraint_type = 'PRIMARY KEY'
+where tco.constraint_type is null
+      and tab.table_schema not in('mysql', 'information_schema', 
+                                  'performance_schema', 'sys')
+      and tab.table_type = 'BASE TABLE'
+order by tab.table_schema,
+         tab.table_name;
 
 -- after 8.0.30 version, it provided system generated pk if you setup the below parameter..
 SET @@sql_generate_invisible_primary_key=ON;
