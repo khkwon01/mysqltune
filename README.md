@@ -34,10 +34,9 @@
   - tmp_table_size
     - controls the maximum size of any individual in-memory internal temporary table by Temptable engine
     - if tmp_table_size limit is reached, it can be made on-disk-based temporary table
-    - TempTable based on memory is controlled by the `temptable_max_ram` and temptable_max_mmap
+    - TempTable based on memory is controlled by the `temptable_max_ram` and `temptable_max_mmap`
       - `temptable_max_ram size` is 3% of the total memory available on the server (minimum : 1GB, maximum : 4GB)
-      - `internal_tmp_mem_storage_engine` is to be Temptable or Memory (default is Temptable, Memory option have more limitaion than Temptable)
-        
+      - `internal_tmp_mem_storage_engine` is to be Temptable or Memory (default is Temptable, Memory option have more limitaion than Temptable)        
   - memory management library (recommend `tcmalloc` library)
     - jemalloc: good perf, less memory management, use `install_jemalloc.sh` script how to build
     - tcmalloc: great, use `install_tcmalloc.sh` script how to build
