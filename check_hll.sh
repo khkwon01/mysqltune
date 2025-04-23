@@ -1,4 +1,4 @@
-# setup related metric for monitoring HLL
+# setup related metric for monitoring HLL (History List Length)
 # HLL means that Innodb is keeping a significant number of old row versions regarding long-running and abandoned transaction has not committed.
 set global innodb_monitor_enable=module_trx;
 
